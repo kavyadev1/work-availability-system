@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const password = document.getElementById("password").value;
     const errorMessage = document.getElementById("error-message");
 
-    // Basic validation (for demonstration purposes only)
+
     if (username === "admin" && password === "password") {
         errorMessage.textContent = "Login successful!";
         errorMessage.style.color = "green";
