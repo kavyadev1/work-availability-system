@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="frontend/assests/styles.css">
+    <title>Home</title>
 </head>
 <body>
-    <div class="home-container">
-        <h2>Home Page</h2>
-        <p>Select your role:</p>
-        <a href="frontend/pages/employee.html" class="button">Employee</a>
-        <a href="frontend/pages/manager.html" class="button">Manager</a>
-    </div>
+    <h2>Welcome to the Home Page</h2>
+    <button onclick="showEmployeeManagement()">Employee Management</button>
+    <button onclick="showManagerManagement()">Manager Management</button>
+    <button onclick="showEmployeeAvailability()">Employee Availability</button>
+    <button onclick="showAssignWork()">Assign Work</button>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        // Functions to navigate to different sections
+        function showEmployeeManagement() {
+            window.location.href = "/employee_management";
+        }
+
+        function showManagerManagement() {
+            window.location.href = "/manager_management";
+        }
+
+        function showEmployeeAvailability() {
+            window.location.href = "/employee_availability";
+        }
+
+        function showAssignWork() {
+            window.location.href = "/assign_work";
+        }
+
+        // Logout function
+        function logout() {
+            window.location.href = "/";
+        }
+    </script>
 </body>
 </html>
