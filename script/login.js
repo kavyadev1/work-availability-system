@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (username === validUsername && password === validPassword) {
             // Load homepage if credentials are correct
-            window.location.href = "homepage.html";
+            window.location.href = "pages/homepage.html";
         } else {
             // Show error message
             errorMessage.textContent = "Invalid username or password. Please try again.";
