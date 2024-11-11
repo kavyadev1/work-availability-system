@@ -5,17 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
     loadLoginForm();
 
     function loadLoginForm() {
-        fetch("login.html")
-            .then(response => response.text())
-            .then(data => {
-                contentDiv.innerHTML = data;
-                const loginForm = document.getElementById("loginForm");
+        contentDiv.innerHTML = `
+            <div class="login-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                    <p id="error-message"></p>
+                </form>
+            </div>
+        `;
 
-                loginForm.addEventListener("submit", function (event) {
-                    event.preventDefault();
-                    handleLogin();
-                });
-            });
+        const loginForm = document.getElementById("loginForm");
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            handleLogin();
+        });
     }
 
     function handleLogin() {
@@ -23,26 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = document.getElementById("password").value;
         const errorMessage = document.getElementById("error-message");
 
-        // For simplicity, we'll use hardcoded credentials
+        // Hardcoded credentials for simplicity
         const validUsername = "admin";
         const validPassword = "password123";
 
         if (username === validUsername && password === validPassword) {
-            // Display the home page content
-            displayHomePage();
+            // Load homepage if credentials are correct
+            window.location.href = "homepage.html";
         } else {
-            // Show an error message
+            // Show error message
             errorMessage.textContent = "Invalid username or password. Please try again.";
         }
     }
-
-    function displayHomePage() {
-        contentDiv.innerHTML = `
-            <div class="home-container">
-                <h2>Welcome to the Home Page!</h2>
-                <p>You have successfully logged in.</p>
-            </div>
-        `;
-    }
 });
-
