@@ -3,20 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login and Home Page</title>
-    <link rel="stylesheet" href="frontend/assests/styles.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="frontend/assests/style.css">
 </head>
 <body>
-    <div id="container"></div>
-
-    <script>
-        // Load the login page initially
-        document.getElementById('container').innerHTML = '<object type="text/html" data="/login" width="100%" height="100%"></object>';
-        
-        // Function to load the Home Page dynamically after successful login
-        function loadHomePage() {
-            document.getElementById('container').innerHTML = '<object type="text/html" data="/home" width="100%" height="100%"></object>';
-        }
-    </script>
+    <div id="content"></div> <!-- Placeholder for login or home page content -->
+    <script src="frontend/script.js"></script>
 </body>
 </html>
+

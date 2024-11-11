@@ -1,49 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <div id="loginPage">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p id="loginMessage"></p>
-    </div>
-
-    <script>
-        // Function to handle login
-        async function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            try {
-                const response = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-
-                const data = await response.json();
-                if (data.success) {
-                    // Redirect to home page upon successful login
-                    loadHomePage();
-                } else {
-                    document.getElementById('loginMessage').innerText = 'Invalid credentials, please try again.';
-                }
-            } catch (error) {
-                console.error('Error logging in:', error);
-                document.getElementById('loginMessage').innerText = 'An error occurred. Please try again later.';
-            }
-        }
-
-        // Function to load the Home Page dynamically
-        function loadHomePage() {
-            window.location.href = '/home';
-        }
-    </script>
-</body>
-</html>
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p id="error-message"></p>
+</div>
