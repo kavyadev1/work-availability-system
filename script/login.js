@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit">Login</button>
-                    <p id="error-message"></p>
+                    <p id="error-message" style="color: red;"></p>
                 </form>
             </div>
         `;
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const validPassword = "password123";
 
         if (username === validUsername && password === validPassword) {
-            // Load homepage if credentials are correct
-            window.location.href = "pages/homepage.html";
+            // Redirect to homepage if credentials are correct
+            window.location.href = "homepage.html";  // assuming login.html is in the same folder as homepage.html
         } else {
             // Show error message
             errorMessage.textContent = "Invalid username or password. Please try again.";
