@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     employeeButton.addEventListener("click", function () {
         // Redirect to the employee page
-        window.location.href = "employee.html";
+        window.location.href = "pages/employee.html";
     });
 });
 
