@@ -5,18 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileButton = document.getElementById("profileButton");
 
     employeeButton.addEventListener("click", function () {
-        alert("Employee button clicked.");
+        window.location.href = "../pages/employee.html"; // replace with the actual URL
     });
 
     managerButton.addEventListener("click", function () {
-        alert("Manager button clicked.");
+        window.location.href = "../pages/manager.html"; // replace with the actual URL
     });
 
     availabilityButton.addEventListener("click", function () {
-        alert("Employee Availability button clicked.");
+        window.location.href = "../pages/availability.html"; // replace with the actual URL
     });
 
     profileButton.addEventListener("click", function () {
-        alert("Profile button clicked.");
+        window.location.href = "../pages/profile.html"; // replace with the actual URL
     });
 });
