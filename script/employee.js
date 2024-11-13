@@ -1,9 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const employeeButton = document.getElementById("employeeButton");
+// employee.js
+function loadEmployeePage() {
+    fetch('employee.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('content').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading Employee page:', error));
+}
 
-    employeeButton.addEventListener("click", function () {
-        // Redirect to the employee page
-        window.location.href = "pages/employee.html";
-    });
-});
 
