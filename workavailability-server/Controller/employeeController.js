@@ -55,6 +55,21 @@ exports.getSubmittedAvailability = async (req, res) => {
             });
         }
 
+        const availabilities = await AvailabilityModel.aggregate(pipeline);
+
+        res.json({
+            status: 200,
+            message: 'success',
+            data: availabilities,
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 500,
+            message: 'error',
+            data: {
+                info: error.message,
+            },
+        });
     }
 };
 
