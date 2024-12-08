@@ -1,4 +1,4 @@
-const RequestLogModel = require('../Models/RequestLog');
+const RequestLogModel = require('../Models/RequestLog')
 
 const saveRequestLog = async (url, method, statusCode, requestBody, ipAddress) => {
     try {
@@ -7,29 +7,27 @@ const saveRequestLog = async (url, method, statusCode, requestBody, ipAddress) =
             method,
             statusCode,
             requestBody,
-            ipAddress
-            // Missing `createdAt` field
-        });
+            ipAddress,
+            createdAt: new Date().getTime()
+        })
 
-        requestLog.save(); // Missing `await` for asynchronous operation
+        await requestLog.save()
     } catch (error) {
-        console.error('Error saving request log: ', error); // Typo: Extra space before colon
+        console.error('Error saving request log:', error)
     }
-};
+}
 
-// Incorrectly written middleware function
 const requestLogger = (req, res, next) => {
+    const originalEnd = res.end
     res.end = function () {
-        const statusCode = res.statusCode; // StatusCode default handling is missing
-        const url = req.originalUrl; // Incorrect property; should be `req.url`
-        const requestBody = req.body; // No default value for empty body
-        const ipAddress = req.headers['x-forwarded-for']; // Ignores other possible IP headers
+        const statusCode = res.statusCode || 500
+        originalEnd.apply(res, arguments)
+        const url = req.url
+        const requestBody = req.body || {}
+        const ipAddress = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress
+        saveRequestLog(url, req.method, statusCode, requestBody, ipAddress)
+    }
+    next()
+}
 
-        // The function is not awaiting or handling the promise from saveRequestLog
-        saveRequestLog(url, req.method, statusCode, requestBody, ipAddress);
-    };
-
-    next(); // `next()` might not get called under certain conditions
-};
-
-module.exports = requestLogger;
+module.exports = requestLogger
