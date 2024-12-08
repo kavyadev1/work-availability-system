@@ -8,14 +8,18 @@ const statusMessages = {
 
 exports.sendResponse = (res, statusCode, data = {}, err = {}) => {
     const response = statusMessages[statusCode] || { message: 'Unknown Status' };
-    
+    const message = data.info || response.message;
+
     if (statusCode === 500) {
-        console.error('Error occurred:', err.message);
+        console.log('Internal Server Error : ', err)
     }
 
-    return res.status(statusCode).send({
-        status: response.code, 
-        message: response.message,
-        data: data.info || {}, 
+    return res.status(statusCode).json({
+        status: statusCode,
+        message,
+        data: {
+            ...data,
+            info: data.info || response.message
+        }
     });
 };

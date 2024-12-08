@@ -1,10 +1,8 @@
 function inputSanitizer(req, res, next) {
     const sanitize = (obj) => {
-        if (obj && typeof obj === 'object') {
-            for (const key in obj) {
-                if (typeof obj[key] === 'string') {
-                    obj[key] = obj[key].trim();
-                }
+        for (const key in obj) {
+            if (typeof obj[key] === 'string') {
+                obj[key] = obj[key].trim();
             }
         }
     };
