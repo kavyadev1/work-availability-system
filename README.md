@@ -33,8 +33,7 @@ Backend:
 2. Install dependencies:
    npm install
 
-3. Create a `.env` file and configure environment variables.
-4. Start the server:
+3. Start the server:
    node server.js
   
 
