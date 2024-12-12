@@ -35,7 +35,7 @@ Backend:
 
 3. Create a `.env` file and configure environment variables.
 4. Start the server:
-   npm start
+   node server.js
   
 
 Frontend:
